@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Construction Planner</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>AI Construction Planner</h2>
+      <form
+        action="/generate_plan"
+        method="POST"
+        class="form-container"
+        id="planForm"
+      >
+        <div class="form-group">
+          <label for="project_name">Project Name:</label>
+          <input type="text" id="project_name" name="project_name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required />
+        </div>
+
+        <div class="form-group">
+          <label for="workers">Available Workers:</label>
+          <input
+            type="text"
+            id="workers"
+            name="workers"
+            required
+            placeholder="John, Mike, Lisa"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="materials">Materials Used:</label>
+          <input
+            type="text"
+            id="materials"
+            name="materials"
+            required
+            placeholder="Cement, Steel, Wood"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="tasks">Tasks to be Performed:</label>
+          <input
+            type="text"
+            id="tasks"
+            name="tasks"
+            required
+            placeholder="Bricklaying, Wiring, Painting"
+          />
+        </div>
+
+        <button type="submit" class="btn-custom">Generate Plan</button>
+        <button type="button" class="btn-custom" onclick="autofillForm()">
+          Autofill Example
+        </button>
+      </form>
+
+      <div id="preview-section" class="container" style="display: none">
+        <h2>Plan Preview</h2>
+        <p id="preview-content"></p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("planForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          document.getElementById("preview-section").style.display = "block";
+          document.getElementById("preview-content").innerText =
+            "Generating AI Plan...";
+          setTimeout(() => {
+            event.target.submit();
+          }, 2000);
+        });
+
+      function autofillForm() {
+        document.getElementById("project_name").value = "Smart Tower Project";
+        document.getElementById("city").value = "New York";
+        document.getElementById("workers").value = "John, Mike, Lisa";
+        document.getElementById("materials").value = "Cement, Steel, Wood";
+        document.getElementById("tasks").value =
+          "Bricklaying, Wiring, Painting";
+      }
+    </script>
+  </body>
+</html>

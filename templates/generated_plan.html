@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generated AI Plan</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Project Plan for {{ project_name }}</h1>
+      <p><strong>Location:</strong> {{ city }}</p>
+
+      <h2>Design</h2>
+      <p>{{ ai_plan['design'] }}</p>
+
+      <h2>Schedule</h2>
+      <p>{{ ai_plan['schedule'] }}</p>
+
+      <h2>Workflow</h2>
+      <p>{{ ai_plan['workflow'] }}</p>
+
+      <h2>Risk Analysis</h2>
+      <div class="table-container">
+        <table class="table risk-analysis-table">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Risk Level</th>
+              <th>Alternative</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for material, (risk, alternative) in
+            ai_plan['risk_analysis'].items() %}
+            <tr>
+              <td>{{ material }}</td>
+              <td>{{ risk }}</td>
+              <td>{{ alternative }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Supply Chain Risk Analysis</h2>
+      <ul>
+        {% for material, (risk, alternative) in
+        ai_plan['supply_chain_risks'].items() %}
+        <li>
+          <strong>{{ material }}</strong>: {{ risk }}. <em>Alternative:</em> {{
+          alternative }}
+        </li>
+        {% endfor %}
+      </ul>
+
+      <h2>Task Allocation (AI + Swarm Robotics)</h2>
+      <ul>
+        {% for task, assigned_to in ai_plan['task_allocation'].items() %}
+        <li>{{ task }} assigned to {{ assigned_to }}</li>
+        {% endfor %}
+      </ul>
+
+      <h2>Real-Time Weather Report</h2>
+      <p>{{ ai_plan['weather_report'] }}</p>
+
+      <h2>Geotechnical Risk Analysis</h2>
+      <p>{{ ai_plan['geotechnical_risk'] }}</p>
+
+      <h2>Adaptive Scheduling Based on Weather</h2>
+      <p>{{ ai_plan['adaptive_scheduling'] }}</p>
+
+      <h2>Drone Safety Monitoring</h2>
+      <p>{{ ai_plan['drone_safety_report'] }}</p>
+
+      <h2>Workflow Automation</h2>
+      <p>{{ ai_plan['workflow_automation'] }}</p>
+
+      <h2>Payment Processing</h2>
+      <p>{{ ai_plan['milestone_payment']|safe }}</p>
+    </div>
+  </body>
+</html>
