@@ -1,4 +1,4 @@
-                                                                                  Self-Evolving AI Construction Planner
+                                                        Self-Evolving AI Construction Planner
 
  Project Overview
 The Self-Evolving AI Construction Planner is an AI-powered web application that generates optimized construction plans based on real-time factors such as workforce availability, material risks, weather conditions, and geotechnical risks.
